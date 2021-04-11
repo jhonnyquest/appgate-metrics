@@ -1,6 +1,5 @@
 package com.appgate.metrics.crosscutting.model;
 
-import com.appgate.metrics.crosscutting.enums.ResponseCodeEnum;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
