@@ -1,4 +1,4 @@
-package com.appgate.metrics.crosscutting.enums;
+package com.appgate.metrics.crosscutting.constants;
 
 /**
  * Canonical domain enum for supported response codes

@@ -6,7 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Data transformation object for generic simple responses
+ * Data transfer object for generic simple responses
  *
  * @author jmunoz
  * @version 1.0
