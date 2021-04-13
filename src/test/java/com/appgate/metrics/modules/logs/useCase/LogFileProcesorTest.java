@@ -37,7 +37,7 @@ public class LogFileProcesorTest {
     private FileHelper fileHelperMock;
 
     @InjectMocks
-    private LogFileProcessor logFileProcessor;
+    private LogFileProcess logFileProcess;
 
     @Test
     public void processFilesTest() throws IOException, URISyntaxException {
@@ -50,7 +50,7 @@ public class LogFileProcesorTest {
         MultipartFile mockFile = data.getMultipartSourceFileMock();
         MultipartFile[] files = {mockFile};
 
-        SimpleResponseDTO response = logFileProcessor.processFiles(files);
+        SimpleResponseDTO response = logFileProcess.processFiles(files);
         Assertions.assertEquals(
                 data.getSimpleResponse(ResponseCodeEnum.SUCCESS).toString(),
                 response.toString());

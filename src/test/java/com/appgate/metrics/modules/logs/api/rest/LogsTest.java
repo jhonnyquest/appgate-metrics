@@ -1,7 +1,7 @@
 package com.appgate.metrics.modules.logs.api.rest;
 
 import com.appgate.metrics.crosscutting.constants.ResponseCodeEnum;
-import com.appgate.metrics.modules.logs.useCase.ILogFileProcessor;
+import com.appgate.metrics.modules.logs.useCase.ILogFileProcess;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,7 +34,7 @@ public class LogsTest {
     private final DataAcrossTestUtil data = new DataAcrossTestUtil();
 
     @Mock
-    private ILogFileProcessor fileProcessorMock;
+    private ILogFileProcess fileProcessorMock;
 
     @InjectMocks
     private Logs logApi;

@@ -1,6 +1,6 @@
 package com.appgate.metrics.modules.logs.api.rest;
 
-import com.appgate.metrics.modules.logs.useCase.ILogFileProcessor;
+import com.appgate.metrics.modules.logs.useCase.ILogFileProcess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import java.text.ParseException;
 import java.util.Objects;
 
 /**
- * Logs file processor Rest API definition
+ * Logs file processor Rest API endpoint definition
  *
  * @author jmunoz
  * @version 1.0
@@ -24,7 +24,7 @@ import java.util.Objects;
 @RequestMapping(value = "/logs")
 public class Logs {
     @Autowired
-    private ILogFileProcessor fileProcessor;
+    private ILogFileProcess fileProcessor;
 
     @PostMapping()
     public ResponseEntity<Object> uploadCustomerLogFile(@RequestParam("files") MultipartFile[] files)

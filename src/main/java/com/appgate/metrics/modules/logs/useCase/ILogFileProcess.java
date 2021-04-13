@@ -14,6 +14,6 @@ import java.text.ParseException;
  * @version 1.0
  * @since 2021-04-10
  */
-public interface ILogFileProcessor {
+public interface ILogFileProcess {
     SimpleResponseDTO processFiles(MultipartFile[] files) throws IOException, ParseException, NoSuchAlgorithmException;
 }

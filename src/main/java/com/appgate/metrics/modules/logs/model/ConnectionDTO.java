@@ -3,6 +3,9 @@ package com.appgate.metrics.modules.logs.model;
 import lombok.*;
 import java.util.Objects;
 
+import static com.appgate.metrics.modules.logs.constants.ConnectionStatusEnum.FAILED;
+import static com.appgate.metrics.modules.logs.constants.ConnectionStatusEnum.SUCCESS;
+
 /**
  * Connections data transfer object
  *
@@ -25,13 +28,13 @@ public class ConnectionDTO {
     private String serverName;
 
     public String getCSVString() {
-        return (Objects.nonNull(userName) ? userName : "") + ","
-                + (Objects.nonNull(date) ? date : "") + ","
-                + (Objects.nonNull(ipAddress) ? ipAddress : "") + ","
-                + (Objects.nonNull(serverIp) ? serverIp : "") + ","
-                + (Objects.nonNull(client) ? client : "") + ","
-                + (Objects.nonNull(status) ? status : "") + ","
-                + (Objects.nonNull(internal) ? internal : "") + ","
-                + (Objects.nonNull(serverName) ? serverName : "");
+        return (Objects.nonNull(userName) ? userName : "NULL") + ","
+                + (Objects.nonNull(date) ? date : "NULL") + ","
+                + (Objects.nonNull(ipAddress) ? ipAddress : "NULL") + ","
+                + (Objects.nonNull(serverIp) ? serverIp : "NULL") + ","
+                + (Objects.nonNull(client) ? client : "NULL") + ","
+                + (Objects.nonNull(status) ? SUCCESS.name() : FAILED.name()) + ","
+                + (Objects.nonNull(internal) ? internal : "NULL") + ","
+                + (Objects.nonNull(serverName) ? serverName : "NULL");
     }
 }

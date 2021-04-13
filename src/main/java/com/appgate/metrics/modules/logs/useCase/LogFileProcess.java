@@ -27,7 +27,7 @@ import static com.appgate.metrics.modules.logs.helpers.parseHelper.identifyEntry
  * @since 2021-04-10
  */
 @Component
-public class LogFileProcessor implements ILogFileProcessor{
+public class LogFileProcess implements ILogFileProcess {
 
     @Autowired
     private FileHelper fileHelper;
