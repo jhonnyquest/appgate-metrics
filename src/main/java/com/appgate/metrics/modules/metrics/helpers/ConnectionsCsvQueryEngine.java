@@ -32,6 +32,10 @@ public class ConnectionsCsvQueryEngine {
 
     final ObjectMapper mapper = new ObjectMapper();
 
+    public ConnectionsCsvQueryEngine() {
+        super();
+    }
+
     public Boolean isKnown(final String key, final String value) throws IOException {
         return Objects.nonNull(getEntry(key, value));
     }
@@ -40,17 +44,18 @@ public class ConnectionsCsvQueryEngine {
         return Boolean.parseBoolean(Objects.requireNonNull(getEntry("userip", ipAddress)).getInternal());
     }
 
-    public Date getLastDate(String type) throws FileNotFoundException, ParseException {
+    public Date getLastDate(String type, String username) throws FileNotFoundException, ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STORED, Locale.getDefault());
         Date date = new SimpleDateFormat(START_DATE_FORMAT).parse(START_DATE);
         List<ConnectionDTO> tableData = getTableData();
         for (ConnectionDTO entry : tableData) {
             if(Objects.nonNull(entry) && formatter.parse(entry.getDatetime()).after(date)
-                    && entry.getStatus().equalsIgnoreCase(type)) {
+                    && entry.getStatus().equalsIgnoreCase(type)
+                    && username.equalsIgnoreCase(entry.getUsername())) {
                 date = formatter.parse(entry.getDatetime());
             }
         }
-        return date;
+        return (date == new SimpleDateFormat(START_DATE_FORMAT).parse(START_DATE)) ? null : date;
     }
 
     private ConnectionDTO getEntry(

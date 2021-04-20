@@ -42,11 +42,11 @@ public class IndicatorsInformation implements IMetrics{
 
     @Override
     public Date getLastSuccessfulLoginDate(final String userName) throws FileNotFoundException, ParseException {
-        return queryEngine.getLastDate(SUCCESS.name());
+        return queryEngine.getLastDate(SUCCESS.name(), userName);
     }
 
     @Override
     public Date getLastFailedLoginDate(final String userName) throws FileNotFoundException, ParseException {
-        return queryEngine.getLastDate(FAILED.name());
+        return queryEngine.getLastDate(FAILED.name(), userName);
     }
 }

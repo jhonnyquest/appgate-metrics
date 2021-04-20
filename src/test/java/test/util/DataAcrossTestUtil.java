@@ -2,12 +2,15 @@ package test.util;
 
 import com.appgate.metrics.crosscutting.constants.ResponseCodeEnum;
 import com.appgate.metrics.crosscutting.model.SimpleResponseDTO;
+import com.appgate.metrics.modules.metrics.model.ConnectionDTO;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Mock data provider for unit tests
@@ -17,6 +20,13 @@ import java.net.URL;
  * @since 2019-06-19
  */
 public class DataAcrossTestUtil {
+
+    public static final String TEST_NAME = "johnDoe";
+    public static final String TEST_IP = "10.10.10.1";
+    public static final String USERNAME_LITERAL = "username";
+    public static final String USER_IP_LITERAL = "userip";
+    public static final String SERVER_IP_LITERAL = "serverip";
+    public static final String GET_TALE_DATA_LITERAL = "getTableData";
 
     public DataAcrossTestUtil() {
         super();
@@ -99,5 +109,29 @@ public class DataAcrossTestUtil {
                 .message(type.getDescription())
                 .responseCode(type.getValue())
                 .build();
+    }
+
+    public List<ConnectionDTO> getConnectionsTestData() {
+        List<ConnectionDTO> response = new ArrayList<>();
+        String[][] data = {
+                {"nikhil","20140616 09:06:41","112.196.12.67","79.138.127.148","console","SUCCESS","false","vm5.appgate.com"},
+                {"cryptzone","20140616 09:08:11","112.196.12.67","79.138.127.148","agclib","SUCCESS","false","vm5.appgate.com"},
+                {"admin","20140617 11:26:21","NULL","116.10.191.163","NULL","FAILED","NULL","NULL"},
+                {"root","20140617 11:38:04","NULL","116.10.191.222","NULL","FAILED","NULL","NULL"},
+                {"test_rs","20140617 12:36:00","112.196.12.67","79.138.127.148","agclib","SUCCESS","false","vm5.appgate.com"}
+        };
+        for (String[] entry: data) {
+            response.add(ConnectionDTO.builder()
+                    .username(entry[0])
+                    .datetime(entry[1])
+                    .userip(entry[2])
+                    .serverip(entry[3])
+                    .authtype(entry[4])
+                    .status(entry[5])
+                    .internal(entry[6])
+                    .servername(entry[7])
+                    .build());
+        }
+        return response;
     }
 }

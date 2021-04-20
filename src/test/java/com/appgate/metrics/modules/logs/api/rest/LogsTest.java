@@ -26,7 +26,7 @@ import static org.mockito.Mockito.when;
  *
  * @author jmunoz
  * @version 1.0
- * @since 2019-06-19
+ * @since 2021-04-20
  */
 @ExtendWith(MockitoExtension.class)
 public class LogsTest {

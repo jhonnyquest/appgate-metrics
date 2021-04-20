@@ -13,6 +13,8 @@ import lombok.*;
 @Setter
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ConnectionDTO {
     private String username;
     private String datetime;
