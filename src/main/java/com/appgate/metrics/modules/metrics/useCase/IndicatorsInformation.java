@@ -12,6 +12,13 @@ import java.util.Date;
 import static com.appgate.metrics.modules.logs.constants.ConnectionStatusEnum.FAILED;
 import static com.appgate.metrics.modules.logs.constants.ConnectionStatusEnum.SUCCESS;
 
+/**
+ * Metrics information implemenntation
+ *
+ * @author jmunoz
+ * @version 1.0
+ * @since 2021-04-12
+ */
 @Component
 public class IndicatorsInformation implements IMetrics{
 

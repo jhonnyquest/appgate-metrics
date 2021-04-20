@@ -2,6 +2,13 @@ package com.appgate.metrics.modules.metrics.model;
 
 import lombok.*;
 
+/**
+ * Connection table model definition
+ *
+ * @author jmunoz
+ * @version 1.0
+ * @since 2021-04-12
+ */
 @Getter
 @Setter
 @ToString

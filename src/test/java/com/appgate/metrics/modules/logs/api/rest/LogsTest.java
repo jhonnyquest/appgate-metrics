@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 /**
  * Junit test of: Logs API component
  *
- * @author blanclabs
+ * @author jmunoz
  * @version 1.0
  * @since 2019-06-19
  */

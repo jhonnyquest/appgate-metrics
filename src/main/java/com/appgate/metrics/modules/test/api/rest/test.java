@@ -6,6 +6,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
+/**
+ * API definition for testing purposes
+ *
+ * @author jmunoz
+ * @version 1.0
+ * @since 2021-04-12
+ */
 @RestController
 @RequestMapping(value = "/test")
 public class test {

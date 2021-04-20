@@ -11,6 +11,13 @@ import java.util.*;
 
 import static com.appgate.metrics.modules.logs.constants.ConnectionStatusEnum.SUCCESS;
 
+/**
+ * CSV query engine helper for connections table
+ *
+ * @author jmunoz
+ * @version 1.0
+ * @since 2021-04-12
+ */
 @Component
 public class ConnectionsCsvQueryEngine {
 
