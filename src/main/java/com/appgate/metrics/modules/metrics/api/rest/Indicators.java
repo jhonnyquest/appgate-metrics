@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.Date;
+import java.util.Objects;
 
 /**
  * Metrics indicators Rest API endpoint definitions
@@ -47,12 +49,22 @@ public class Indicators {
     @GetMapping("/lastSuccessfulLoginDate")
     public ResponseEntity<Object> getLastSuccessfulLoginDate(
             @RequestParam("username") final String userName) throws FileNotFoundException, ParseException {
-        return ResponseEntity.ok(metrics.getLastSuccessfulLoginDate(userName));
+        Date response = metrics.getLastSuccessfulLoginDate(userName);
+        if (Objects.nonNull(response)) {
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @GetMapping("/lastFailedLoginDate")
     public ResponseEntity<Object> getLastFailedLoginDate(
             @RequestParam("username") final String userName) throws FileNotFoundException, ParseException {
-        return ResponseEntity.ok(metrics.getLastFailedLoginDate(userName));
+        Date response = metrics.getLastFailedLoginDate(userName);
+        if (Objects.nonNull(response)) {
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

@@ -41,21 +41,27 @@ public class ConnectionsCsvQueryEngine {
     }
 
     public Boolean isInternalIp(String ipAddress) throws IOException {
-        return Boolean.parseBoolean(Objects.requireNonNull(getEntry("userip", ipAddress)).getInternal());
+        ConnectionDTO resultObject = getEntry("userip", ipAddress);
+        if (Objects.nonNull(resultObject)) {
+            return Boolean.parseBoolean(resultObject.getInternal());
+        }
+        return Boolean.FALSE;
     }
 
     public Date getLastDate(String type, String username) throws FileNotFoundException, ParseException {
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT_STORED, Locale.getDefault());
         Date date = new SimpleDateFormat(START_DATE_FORMAT).parse(START_DATE);
         List<ConnectionDTO> tableData = getTableData();
+        Boolean updated = Boolean.FALSE;
         for (ConnectionDTO entry : tableData) {
             if(Objects.nonNull(entry) && formatter.parse(entry.getDatetime()).after(date)
                     && entry.getStatus().equalsIgnoreCase(type)
                     && username.equalsIgnoreCase(entry.getUsername())) {
                 date = formatter.parse(entry.getDatetime());
+                updated = Boolean.TRUE;
             }
         }
-        return (date == new SimpleDateFormat(START_DATE_FORMAT).parse(START_DATE)) ? null : date;
+        return (updated) ? date : null;
     }
 
     private ConnectionDTO getEntry(
